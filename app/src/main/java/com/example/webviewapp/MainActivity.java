@@ -4,14 +4,19 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.webkit.WebView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+
 public class MainActivity extends AppCompatActivity {
+    private WebView myWebView;
 
     public void showExternalWebPage(){
         // TODO: Add your code for showing external web page here
+        String externalURLAsset = "https://www.wikipedia.org/";
+        myWebView.loadUrl(externalURLAsset);
     }
 
     public void showInternalWebPage(){
@@ -24,6 +29,11 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        myWebView = findViewById(R.id.app_webview);
+        myWebView.getSettings().getJavaScriptEnabled();
+
+
 
         /*
         * Rename your App. Tip: Values->Strings
@@ -68,11 +78,13 @@ public class MainActivity extends AppCompatActivity {
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_external_web) {
             Log.d("==>","Will display external web page");
+            showExternalWebPage();
             return true;
         }
 
         if (id == R.id.action_internal_web) {
             Log.d("==>","Will display internal web page");
+            showInternalWebPage();
             return true;
         }
 

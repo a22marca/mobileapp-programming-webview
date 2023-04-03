@@ -21,6 +21,8 @@ public class MainActivity extends AppCompatActivity {
 
     public void showInternalWebPage(){
         // TODO: Add your code for showing internal web page here
+        String internalURLAsset = "file:///android_asset/index.html";
+        myWebView.loadUrl(internalURLAsset);
     }
 
     @Override
@@ -30,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        myWebView = findViewById(R.id.app_webview);
+        myWebView = findViewById(R.id.my_webview);
         myWebView.getSettings().getJavaScriptEnabled();
 
 

@@ -14,11 +14,15 @@ public class MainActivity extends AppCompatActivity {
     private WebView myWebView;
 
     public void showExternalWebPage(){
-        myWebView.loadUrl("https://www.wikipedia.org/");
+        // TODO: Add your code for showing external web page here
+        String externalURLAsset = "https://www.his.se/";
+        myWebView.loadUrl(externalURLAsset);
     }
 
     public void showInternalWebPage(){
-        myWebView.loadUrl("file:///android_asset/index.html");
+        // TODO: Add your code for showing internal web page here
+        String internalURLAsset = "file:///android_asset/index.html";
+        myWebView.loadUrl(internalURLAsset);
     }
 
     @Override
@@ -29,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         myWebView = findViewById(R.id.my_webview);
-        myWebView.getSettings().getJavaScriptEnabled();
+        myWebView.getSettings().setJavaScriptEnabled(true);
 
 
 

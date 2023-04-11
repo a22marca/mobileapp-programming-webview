@@ -1,42 +1,37 @@
-
 # Rapport
 
-**Skriv din rapport här!**
+En WebView med ID:t `my_webview` implementerades i filen `activity_main.xml`. Detta gjorde det möjligt att skapa ett webview objekt i `MainActivity` som refererar till ID:et. Detta objekt instansieras i `onCreate` metoden och användes sedan i två olika metoder som öppnar en extern eller intern webview. Då en intern webview visas så användes en lokal html-fil som skapats i projektet och när en extern webview ska visas så används en webbsidas URL.
 
-_Du kan ta bort all text som finns sedan tidigare_.
+För att applikationen ska nå hemsidan på internet så implementerades en rad kod i `AndroidManifest.xml` som gör detta möjligt. Fortsättningsvis så tilläts även utförande av JavaScript på webbsidor genom att ändra inställningen för webview objektet i `MainActivity`.
 
-## Följande grundsyn gäller dugga-svar:
-
-- Ett kortfattat svar är att föredra. Svar som är längre än en sida text (skärmdumpar och programkod exkluderat) är onödigt långt.
-- Svaret skall ha minst en snutt programkod.
-- Svaret skall inkludera en kort övergripande förklarande text som redogör för vad respektive snutt programkod gör eller som svarar på annan teorifråga.
-- Svaret skall ha minst en skärmdump. Skärmdumpar skall illustrera exekvering av relevant programkod. Eventuell text i skärmdumpar måste vara läsbar.
-- I de fall detta efterfrågas, dela upp delar av ditt svar i för- och nackdelar. Dina för- respektive nackdelar skall vara i form av punktlistor med kortare stycken (3-4 meningar).
-
-Programkod ska se ut som exemplet nedan. Koden måste vara korrekt indenterad då den blir lättare att läsa vilket gör det lättare att hitta syntaktiska fel.
-
+Nedan visas raden som tillåter applikationen att använda internet.
+```xml
+    <uses-permission android:name="android.permission.INTERNET" />
 ```
-function errorCallback(error) {
-    switch(error.code) {
-        case error.PERMISSION_DENIED:
-            // Geolocation API stöds inte, gör något
-            break;
-        case error.POSITION_UNAVAILABLE:
-            // Misslyckat positionsanrop, gör något
-            break;
-        case error.UNKNOWN_ERROR:
-            // Okänt fel, gör något
-            break;
-    }
+
+Koden nedan visar hur webview objektet instansieras och tillåts utföra javascript på hemsidor.
+```java
+myWebView = findViewById(R.id.my_webview);
+myWebView.getSettings().setJavaScriptEnabled(true);
+```
+
+Metoderna `showExternalWebPage` och `showInternalWebPage` används för att öppna en extern eller intern hemsida. 
+
+```java
+public void showExternalWebPage(){
+    myWebView.loadUrl("https://www.his.se/");
+}
+
+public void showInternalWebPage(){
+    myWebView.loadUrl("file:///android_asset/index.html");
 }
 ```
 
-Bilder läggs i samma mapp som markdown-filen.
+De två nämnda metoderna ovan anropas beroende på vilken knapp användaren trycker på i applikationen. Denna selektion sker i metoden `onOptionsItemSelected`.
 
-![](android.png)
+Filen som används för den interna webbsidan skapades och placerades i `assets` mappen av projektet, och den visar en bild och en text. Den externa webview tar användaren till www.his.se. På bilderna nedan visas hur dessa två webbsidor presenteras i applikationen.
 
-Läs gärna:
+<img src="internalWebView.png" height="500px">
+<img src="externalWebView.png" height="500px">
 
-- Boulos, M.N.K., Warren, J., Gong, J. & Yue, P. (2010) Web GIS in practice VIII: HTML5 and the canvas element for interactive online mapping. International journal of health geographics 9, 14. Shin, Y. &
-- Wunsche, B.C. (2013) A smartphone-based golf simulation exercise game for supporting arthritis patients. 2013 28th International Conference of Image and Vision Computing New Zealand (IVCNZ), IEEE, pp. 459–464.
-- Wohlin, C., Runeson, P., Höst, M., Ohlsson, M.C., Regnell, B., Wesslén, A. (2012) Experimentation in Software Engineering, Berlin, Heidelberg: Springer Berlin Heidelberg.
+_På den vänstra bilden visas den interna webviewen och på den högra den externa webviewen._

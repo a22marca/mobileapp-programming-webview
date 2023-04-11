@@ -14,13 +14,11 @@ public class MainActivity extends AppCompatActivity {
     private WebView myWebView;
 
     public void showExternalWebPage(){
-        String externalURLAsset = "https://www.his.se/";
-        myWebView.loadUrl(externalURLAsset);
+        myWebView.loadUrl("https://www.his.se/");
     }
 
     public void showInternalWebPage(){
-        String internalURLAsset = "file:///android_asset/index.html";
-        myWebView.loadUrl(internalURLAsset);
+        myWebView.loadUrl("file:///android_asset/index.html");
     }
 
     @Override

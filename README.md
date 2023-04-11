@@ -31,8 +31,11 @@ De två nämnda metoderna ovan anropas beroende på vilken knapp användaren try
 
 Filen som används för den interna webbsidan skapades och placerades i `assets` mappen av projektet, och den visar en bild och en text. Den externa webview tar användaren till www.his.se. På bilderna nedan visas hur dessa två webbsidor presenteras i applikationen.
 
+
+Den interna hemsidan som används i applikationen.
+
 <img src="internalWebView.png" height="500px">
-_Den interna hemsidan som används i applikationen._
+
+Den externa webviewn tar användaren till www.his.se.
 
 <img src="externalWebView.png" height="500px">
-_Den externa webviewn tar användaren till www.his.se_
